@@ -1,0 +1,123 @@
+<!-- Save this as birthday.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday, Baby!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to top right, #ffafbd, #ffc3a0);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 100px;
+      font-size: 3em;
+      animation: fadeIn 2s ease-in;
+    }
+
+    p {
+      font-size: 1.5em;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(-45deg);
+      animation: floatHearts 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(100vh) rotate(-45deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(-45deg); opacity: 0; }
+    }
+
+    .balloon {
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      position: absolute;
+      cursor: pointer;
+      animation: floatBalloon 6s ease-in-out infinite;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 28px;
+      width: 2px;
+      height: 20px;
+      background: #fff;
+    }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-100px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Birthday, Baby! 🎂💕</h1>
+  <p>I love you forever, and I'll always do so. 💖</p>
+
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+    }
+
+    for (let i = 0; i < 10; i++) {
+      let balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 90 + 'vw';
+      balloon.style.top = Math.random() * 80 + 'vh';
+      balloon.addEventListener('click', () => {
+        balloon.remove();
+      });
+      document.body.appendChild(balloon);
+    }
+  </script>
+</body>
+</html>
